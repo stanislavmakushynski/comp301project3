@@ -52,6 +52,22 @@
 
 
     ;;---------------------------------------------------------
+
+    (expression
+     ("empty-stack" "(" ")")
+     stack-exp)
+
+    (expression
+     ("stack-push" "(" expression "," expression ")")
+     stack-push-exp)
+
+    (expression
+     ("stack-pop" "(" expression ")")
+     stack-pop-exp)
+
+    (expression
+     ("stack-peek" "(" expression ")")
+     stack-peek-exp)
     
     ))
 

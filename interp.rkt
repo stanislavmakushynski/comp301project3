@@ -79,6 +79,29 @@
       ; Write the required expressions starting from here
 
       ;;-------------------------------------------------
+
+      (stack-exp () (stack-val (list)))
+
+      (stack-push-exp (stack-exp1 exp1)
+                      (let ((lst (expval->stack (value-of stack-exp1 env)))
+                             (n   (expval->num   (value-of exp1 env))))
+                        (stack-val (cons n lst))))
+
+      (stack-pop-exp (stk-exp)
+                     (let ((stk (expval->stack (value-of stk-exp env))))
+                       (if (null? stk)
+                           (begin
+                             (display "pop from empty stack!\n")
+                             (stack-val stk))
+                           (stack-val (cdr stk)))))
+
+      (stack-peek-exp (stk-exp)
+                     (let ((stk (expval->stack (value-of stk-exp env))))
+                       (if (null? stk)
+                           (begin
+                             (display "peek into empty stack!\n")
+                             (num-val 2813))
+                           (num-val (car stk)))))
       
       )))
 
