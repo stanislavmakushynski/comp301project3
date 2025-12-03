@@ -113,7 +113,7 @@
     (simple-stack-peek-3 "stack-peek(stack-pop(stack-push(stack-push(empty-stack(),8), 13)))" 8)
     (simple-stack-peek-4 "stack-peek(stack-pop(stack-pop(stack-push(stack-push(empty-stack(),8), 13))))" 2813)
     (simple-stack-peek-5 "stack-push(empty-stack(), stack-peek(stack-push(empty-stack(),1)))" (1))
-#|    
+  
     (simple-push-multi-0 "stack-push-multi(empty-stack())" ())
     (simple-push-multi-1 "stack-push-multi(empty-stack(),8,13,21)" (21 13 8))
     (simple-push-multi-2 "stack-push-multi(empty-stack(),1,2,3,4,5)" (5 4 3 2 1))
@@ -129,7 +129,7 @@
    
     (simple-merge-0 "stack-merge(stack-push-multi(empty-stack(), 1, 2, 3), stack-push-multi(empty-stack(), 4, 5, 6))" (4 5 6 3 2 1))
     (simple-merge-1 "stack-merge(stack-push(empty-stack(), 1), stack-pop-multi(stack-push-multi(empty-stack(),1,2,3,4,5) , 1))" (1 2 3 4 1))
- (simple-merge-2 "stack-merge(empty-stack(), stack-push-multi(empty-stack(), 4, 5, 6))" (4 5 6)) |#
+ (simple-merge-2 "stack-merge(empty-stack(), stack-push-multi(empty-stack(), 4, 5, 6))" (4 5 6))
 )
 
 (display "If you don't see \"FAILURE\" all tests were successful. If not revise your code.")

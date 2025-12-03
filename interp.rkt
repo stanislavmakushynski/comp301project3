@@ -74,11 +74,19 @@
                       (arg (value-of rand env)))
                   (apply-procedure proc arg)))
       
-      ;;----------------------------------------------------
-      ; INSERT YOUR CODE HERE
-      ; Write the required expressions starting from here
+      (stack-push-multi-exp (stack-exp exps)
+        (let ((stk (expval->stack (value-of stack-exp env))))
+          (push-n exps stk env)))
 
-      ;;-------------------------------------------------
+      (stack-pop-multi-exp (stack-exp num-exp)
+        (let ((stk (expval->stack (value-of stack-exp env)))
+              (n (expval->num (value-of num-exp env))))
+          (stack-val (pop-n stk n))))
+
+      (stack-merge-exp (stack1-exp stack2-exp)
+        (let ((s1 (expval->stack (value-of stack1-exp env)))
+              (s2 (expval->stack (value-of stack2-exp env))))
+          (stack-val (merge s1 s2))))
 
       (stack-exp () (stack-val (list)))
 
@@ -109,7 +117,24 @@
 ; INSERT YOUR CODE HERE
 ; you may use this area to define helper functions
 ;;-----------------------------------------
+(define (push-n exps current env)
+  (if (null? exps)
+      (stack-val current)
+      (let ((n (expval->num (value-of (car exps) env))))
+        (push-n (cdr exps) (cons n current) env))))
 
+(define (merge a b)
+  (if (null? b)
+      a
+      (merge (cons (car b) a) (cdr b))))
+
+(define (pop-n s n)
+  (cond
+    ((null? s)
+     (begin (display "pop-multi beyond stack size!\n")
+            (list)))
+    ((<= n 0) s)
+    (else (pop-n (cdr s) (- n 1)))))
 
 ;;-----------------------------------------
 

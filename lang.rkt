@@ -46,12 +46,15 @@
      ("(" expression expression ")")
      call-exp)
 
-    ;;---------------------------------------------------------
-    ; INSERT YOUR CODE HERE
-    ; Add the syntax for the new expressions here below:
-
-
-    ;;---------------------------------------------------------
+     (expression
+     ("stack-push-multi" "(" expression (arbno "," expression) ")")
+     stack-push-multi-exp)
+     (expression
+     ("stack-pop-multi" "(" expression "," expression ")")
+     stack-pop-multi-exp)
+     (expression
+     ("stack-merge" "(" expression "," expression ")")
+     stack-merge-exp)
 
     (expression
      ("empty-stack" "(" ")")
@@ -83,4 +86,3 @@
 
 (define just-scan
   (sllgen:make-string-scanner the-lexical-spec the-grammar))
-
